@@ -1,0 +1,4 @@
+datadir: data
+
+loadInitialData: true
+productDataDirectory: src/main/resources/products
