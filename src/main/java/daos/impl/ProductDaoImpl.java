@@ -1,6 +1,7 @@
 package daos.impl;
 
 import com.google.common.collect.Lists;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.yammer.dropwizard.json.Json;
 import daos.ProductDao;
 import models.Product;
@@ -8,6 +9,7 @@ import models.QueryFormat;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.node.Node;
@@ -96,6 +98,13 @@ public class ProductDaoImpl implements ProductDao {
                 setQuery(boolQuery).execute().actionGet();
 
         return toProducts(searchResponse);
+    }
+
+    public Boolean updateProduct(String id, Product product) {
+        byte[] data = json.writeValueAsBytes(product);
+        UpdateResponse updateResponse = node.client().prepareUpdate().setIndex(INDEX).setType(TYPE).
+                setId(id).setDoc(data).execute().actionGet();
+        return updateResponse.isCreated();
     }
 
     private List<Product> toProducts(SearchResponse searchResponse) {

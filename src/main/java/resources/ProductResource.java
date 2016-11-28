@@ -4,10 +4,7 @@ package resources;
 import daos.ProductDao;
 import models.Product;
 
-import javax.ws.rs.DELETE;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 
 /**
  * Created by Ria on 27/11/16.
@@ -31,5 +28,12 @@ public class ProductResource {
     @DELETE
     public boolean delete(@PathParam("id") String id) {
         return productDao.deleteById(id);
+    }
+
+    @Path("/{id}")
+    @PUT
+    public Boolean post(@PathParam("id") String id, Product product) {
+
+        return productDao.updateProduct(id, product);
     }
 }
