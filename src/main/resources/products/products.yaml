@@ -1,0 +1,44 @@
+products:
+   -  name : Rebok,
+      type : Shoes,
+      attributes : [red]
+  
+   -  name : Sniper,
+      type : Shoes,
+      attributes : [red]
+  
+   -  name : Bata,
+      type : Shoes,
+      attributes : [red]
+  
+   -  name : Rebok,
+      type : Shoes,
+      attributes : [blue]
+  
+   -  name : Sniper,
+      type : Shoes,
+      attributes : [white]
+  
+   -  name : Bata,
+      type : Shoes,
+      attributes : [blue]
+  
+   -  name : Harry Potter 1,
+      type : Books,
+      attributes : [fantasy]
+  
+   -  name : Harry Potter 2,
+      type : Books,
+      attributes : [fiction]
+  
+   -  name : Harry Potter 3,
+      type : Books,
+      attributes : [fantasy]
+  
+   -  name : Harry Potter 4,
+      type : Books,
+      attributes : [fiction]
+  
+   -  name : Harry Potter 5,
+      type : Books,
+      attributes : [fantasy]

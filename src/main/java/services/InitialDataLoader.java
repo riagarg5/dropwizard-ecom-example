@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import daos.ProductDao;
+import models.MyYamlFile;
 import models.Product;
 
 import com.yammer.dropwizard.json.Json;
@@ -43,13 +44,11 @@ public class InitialDataLoader {
 
                 log.info("Checking for article file '{}'", productFile.getName());
                 try {
-                    String slug = productFile.getName().replaceAll(".yaml", "");
-                    List<Product> products = productDao.findByName(slug);
-                    if (products.size() == 0) {
-                        log.info("Adding new article [{}]", slug);
-                        Product product = json.readYamlValue(productFile, Product.class);
-                        productDao.store(product);
-                    }
+                    log.info("Adding new article [{}]", "a");
+                    MyYamlFile product = json.readYamlValue(productFile, MyYamlFile.class);
+                    for (int i =0; i<product.getProducts().size(); i++)
+                        productDao.store(product.getProducts().get(i));
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
